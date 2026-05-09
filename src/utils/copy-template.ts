@@ -1,6 +1,6 @@
 import type { VarMap } from '../types'
-import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises'
-import { join } from 'node:path'
+import { mkdir, readFile, readdir, stat, writeFile } from 'node:fs/promises'
+import { dirname, join } from 'node:path'
 import { renderTemplate } from './render-template'
 
 export async function copyTemplate(
@@ -8,6 +8,15 @@ export async function copyTemplate(
   targetDir: string,
   values: VarMap,
 ) {
+  const sourceStat = await stat(sourceDir)
+
+  if (sourceStat.isFile()) {
+    const content = await readFile(sourceDir, 'utf8')
+    await mkdir(dirname(targetDir), { recursive: true })
+    await writeFile(targetDir, renderTemplate(content, values))
+    return
+  }
+
   await mkdir(targetDir, { recursive: true })
   const entries = await readdir(sourceDir, { withFileTypes: true })
 

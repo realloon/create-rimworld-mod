@@ -1,5 +1,6 @@
 export type Answers = {
   author: string
+  createCSharpProject: boolean
   projectName: string
 }
 
