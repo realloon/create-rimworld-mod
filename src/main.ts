@@ -1,8 +1,8 @@
 #!/usr/bin/env bun
 import type { Answers } from './types'
-import { copyTemplate, toPascalName } from './utils'
 import { join, resolve } from 'node:path'
 import prompts from 'prompts'
+import { toPascalName, copyTemplate } from './utils'
 
 const response = await prompts<keyof Answers>([
   {
@@ -19,11 +19,11 @@ const response = await prompts<keyof Answers>([
   },
 ])
 
-const projectName = toPascalName(response.projectName)
+const projectName = toPascalName(response.projectName) ?? 'MyMod'
 const author = response.author.trim()
 const packageId = `${author}.${projectName}`
 const targetDir = resolve(process.cwd(), projectName)
-const templateDir = join(import.meta.dir, '..', 'template')
+const templateDir = join(import.meta.dir, '../template')
 
 await copyTemplate(templateDir, targetDir, {
   projectName,

@@ -1,8 +1,8 @@
-export const renderTemplate = (
-  content: string,
-  values: Record<string, string>,
-) =>
-  content.replace(
+import type { VarMap } from '../types'
+
+export function renderTemplate(content: string, values: VarMap) {
+  return content.replace(
     /\{\{(\w+)\}\}/g,
     (match, key: string) => values[key] ?? match,
   )
+}

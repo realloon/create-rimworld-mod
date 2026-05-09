@@ -1,14 +1,14 @@
+import type { VarMap } from '../types'
 import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import { renderTemplate } from './render-template'
 
-export const copyTemplate = async (
+export async function copyTemplate(
   sourceDir: string,
   targetDir: string,
-  values: Record<string, string>,
-) => {
+  values: VarMap,
+) {
   await mkdir(targetDir, { recursive: true })
-
   const entries = await readdir(sourceDir, { withFileTypes: true })
 
   for (const entry of entries) {
