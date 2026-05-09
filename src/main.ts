@@ -8,14 +8,14 @@ const response = await prompts<keyof Answers>([
   {
     name: 'projectName',
     type: 'text',
-    message: '输入项目名称',
+    message: 'Project name',
     initial: 'MyMod',
   },
   {
     name: 'author',
     type: 'text',
-    message: '输入作者',
-    initial: 'author',
+    message: 'Author',
+    initial: 'Author',
   },
 ])
 
@@ -31,4 +31,4 @@ await copyTemplate(templateDir, targetDir, {
   packageId,
 })
 
-console.log(`Created ${projectName} in ${targetDir}`)
+console.log(`Created Mod in ${targetDir}`)
