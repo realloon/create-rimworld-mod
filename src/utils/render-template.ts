@@ -1,8 +1,7 @@
 import type { VarMap } from '../types'
 
+const pattern = /\{ ?(\w+) ?\}/g
+
 export function renderTemplate(content: string, values: VarMap) {
-  return content.replace(
-    /\{\{(\w+)\}\}/g,
-    (match, key: string) => values[key] ?? match,
-  )
+  return content.replace(pattern, (match, key) => values[key] ?? match)
 }
