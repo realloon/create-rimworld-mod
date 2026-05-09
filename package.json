@@ -1,0 +1,29 @@
+{
+  "name": "create-rimworld-mod",
+  "version": "0.1.0",
+  "description": "Create a RimWorld mod project",
+  "module": "src/main.ts",
+  "bin": {
+    "create-rimworld-mod": "src/main.ts"
+  },
+  "type": "module",
+  "files": [
+    "src",
+    "template",
+    "README.md"
+  ],
+  "scripts": {
+    "start": "bun run src/main.ts",
+    "typecheck": "bun run tsc --noEmit"
+  },
+  "dependencies": {
+    "prompts": "^2.4.2"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/prompts": "^2.4.9"
+  },
+  "peerDependencies": {
+    "typescript": "^6.0.3"
+  }
+}
