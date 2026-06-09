@@ -1,4 +1,4 @@
-#!/usr/bin/env bun
+#!/usr/bin/env node
 import type { Answers } from './types'
 import { join, resolve } from 'node:path'
 import prompts from 'prompts'
