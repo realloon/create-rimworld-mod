@@ -1,7 +1,12 @@
 {
   "name": "create-rimworld-mod",
   "version": "0.1.0",
+  "author": "Vortex",
   "description": "Create a RimWorld mod project",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/realloon/create-rimworld-mod"
+  },
   "module": "src/main.ts",
   "bin": {
     "create-rimworld-mod": "src/main.ts"
